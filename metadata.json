@@ -1,0 +1,6 @@
+{
+  "name": "Lumi Library AI Chat Widget",
+  "description": "Deep navy AI Chatbot widget UI for college library featuring Lumi the white sheep mascot with Thai-English bilingual support and FAQs sidebar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
