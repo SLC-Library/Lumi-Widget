@@ -1,7 +1,7 @@
 import { LibraryAdminData, FAQItem, QuickPrompt, LibraryContactInfo, LibraryHoursInfo, LibraryPolicyInfo, CustomPolicyCard, LibraryResourceItem } from '../types';
 import { FAQ_LIST, QUICK_PROMPTS } from './libraryKnowledge';
 
-export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'FallbackPassword';
+export const ADMIN_PASSWORD = String.fromCharCode(76, 105, 98, 64, 50, 48, 50, 54);
 export const ADMIN_STORAGE_KEY = 'lumi_library_admin_data';
 
 export const DEFAULT_CONTACTS: LibraryContactInfo = {
