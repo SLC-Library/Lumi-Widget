@@ -420,7 +420,7 @@
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                     <!-- Item 1: Room Booking -->
-                    <button onclick="window.LumiWidget.sendMessage('ขอจองห้องประชุม')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
+                    <button onclick="window.LumiWidget.sendQuickMessage('ขอจองห้องประชุม', 'How can I book a meeting room?')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
                       <div class="flex items-center gap-2 min-w-0 pr-1">
                         <span class="text-base flex-shrink-0">🏢</span>
                         <span class="text-xs sm:text-[13px] text-slate-700 font-medium group-hover:text-blue-900 truncate lumi-quick-1">ขอจองห้องประชุม</span>
@@ -429,7 +429,7 @@
                     </button>
 
                     <!-- Item 2: Borrowing Period -->
-                    <button onclick="window.LumiWidget.sendMessage('ยืมหนังสือได้กี่วัน')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
+                    <button onclick="window.LumiWidget.sendQuickMessage('ยืมหนังสือได้กี่วัน', 'How long can I borrow books?')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
                       <div class="flex items-center gap-2 min-w-0 pr-1">
                         <span class="text-base flex-shrink-0">📚</span>
                         <span class="text-xs sm:text-[13px] text-slate-700 font-medium group-hover:text-blue-900 truncate lumi-quick-2">ยืมหนังสือได้กี่วัน</span>
@@ -438,7 +438,7 @@
                     </button>
 
                     <!-- Item 3: Library Hours -->
-                    <button onclick="window.LumiWidget.sendMessage('วันเวลาทำการของห้องสมุด')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
+                    <button onclick="window.LumiWidget.sendQuickMessage('วันเวลาทำการของห้องสมุด', 'What are the library opening hours?')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
                       <div class="flex items-center gap-2 min-w-0 pr-1">
                         <span class="text-base flex-shrink-0">⏰</span>
                         <span class="text-xs sm:text-[13px] text-slate-700 font-medium group-hover:text-blue-900 truncate lumi-quick-3">วันเวลาทำการของห้องสมุด</span>
@@ -447,7 +447,7 @@
                     </button>
 
                     <!-- Item 4: Book Search -->
-                    <button onclick="window.LumiWidget.sendMessage('สืบค้นหนังสือได้อย่างไร')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
+                    <button onclick="window.LumiWidget.sendQuickMessage('สืบค้นหนังสือได้อย่างไร', 'How do I search for books in the catalog?')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
                       <div class="flex items-center gap-2 min-w-0 pr-1">
                         <span class="text-base flex-shrink-0">🔍</span>
                         <span class="text-xs sm:text-[13px] text-slate-700 font-medium group-hover:text-blue-900 truncate lumi-quick-4">สืบค้นหนังสือได้อย่างไร</span>
@@ -456,7 +456,7 @@
                     </button>
 
                     <!-- Item 5: Databases -->
-                    <button onclick="window.LumiWidget.sendMessage('ฐานข้อมูลมีอะไรบ้าง')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
+                    <button onclick="window.LumiWidget.sendQuickMessage('ฐานข้อมูลมีอะไรบ้าง', 'What online databases are available?')" class="text-left p-3 rounded-xl bg-slate-50/80 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all flex items-center justify-between group cursor-pointer shadow-2xs">
                       <div class="flex items-center gap-2 min-w-0 pr-1">
                         <span class="text-base flex-shrink-0">🌐</span>
                         <span class="text-xs sm:text-[13px] text-slate-700 font-medium group-hover:text-blue-900 truncate lumi-quick-5">ฐานข้อมูลมีอะไรบ้าง</span>
@@ -1271,6 +1271,10 @@
     sendMessage: (msg) => {
       if (!isWidgetOpen) openWidget();
       sendMessage(msg);
+    },
+    sendQuickMessage: (messageTh, messageEn) => {
+      if (!isWidgetOpen) openWidget();
+      sendMessage(currentLang === 'th' ? messageTh : messageEn);
     },
     speak: (text) => {
       if ('speechSynthesis' in window) {
