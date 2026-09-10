@@ -143,7 +143,7 @@ export function getAutoResponse(query: string, lang: 'th' | 'en'): { textTh: str
       textTh: '🏢 **การจองห้องประชุมออนไลน์:**\nสามารถจองห้องประชุมเพื่อการเรียนรู้และกิจกรรมกลุ่มได้ผ่านระบบ **SLC Room Booking** ครับ',
       textEn: '🏢 **Meeting Room Reservation:**\nYou can book study and group rooms easily via **SLC Room Booking**.',
       links: [
-        { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking System', url: 'https://lib-akira.github.io/SLC-RoomBooking/' }
+        { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking System', url: 'https://slc-library.github.io/SLC_RoomBooking/' }
       ]
     };
   }
