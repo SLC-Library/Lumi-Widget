@@ -128,7 +128,7 @@ export const DEFAULT_RESOURCES: LibraryResourceItem[] = [
     titleEn: 'SLC Room Booking Portal',
     descTh: 'จองห้องประชุมและห้องศึกษาออนไลน์',
     descEn: 'Reserve meeting and group study rooms online',
-    url: 'https://lib-akira.github.io/SLC-RoomBooking/',
+    url: 'https://slc-library.github.io/SLC_RoomBooking/',
     icon: 'building',
     categoryTh: 'จองห้อง',
     categoryEn: 'Room Booking'
@@ -227,7 +227,7 @@ export function getDynamicAutoResponse(
       textTh: matchedFaq.answerTh,
       textEn: matchedFaq.answerEn,
       links: matchedFaq.categoryTh.includes('ห้องประชุม') || matchedFaq.categoryEn.includes('Room')
-        ? [{ titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking System', url: 'https://lib-akira.github.io/SLC-RoomBooking/' }]
+        ? [{ titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking System', url: 'https://slc-library.github.io/SLC_RoomBooking/' }]
         : matchedFaq.categoryTh.includes('ยืม') || matchedFaq.categoryEn.includes('Loan')
         ? [{ titleTh: 'ระบบ Web OPAC', titleEn: 'Web OPAC System', url: 'http://slclib.slc.ac.th/' }]
         : undefined
@@ -240,7 +240,7 @@ export function getDynamicAutoResponse(
       textTh: '🏢 **การจองห้องประชุมออนไลน์:**\nสามารถจองห้องประชุมเพื่อการเรียนรู้และกิจกรรมกลุ่มได้ผ่านระบบ **SLC Room Booking** ครับ',
       textEn: '🏢 **Meeting Room Reservation:**\nYou can book study and group rooms easily via **SLC Room Booking**.',
       links: [
-        { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking System', url: 'https://lib-akira.github.io/SLC-RoomBooking/' }
+        { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking System', url: 'https://slc-library.github.io/SLC_RoomBooking/' }
       ]
     };
   }

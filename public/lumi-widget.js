@@ -161,7 +161,7 @@
       aTh: '📝 **การจองห้องประชุมออนไลน์:**\nสามารถจองได้สะดวกรวดเร็วผ่านระบบจองห้องประชุมออนไลน์ของห้องสมุด โดยคลิกที่ลิงก์ด้านล่างนี้ได้เลยครับ',
       aEn: '📝 **Room Reservation:**\nYou can book through the Library Online Room Reservation system by clicking the link below:',
       links: [
-        { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking Portal', url: 'https://lib-akira.github.io/SLC-RoomBooking/' }
+        { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'SLC Room Booking Portal', url: 'https://slc-library.github.io/SLC_RoomBooking/' }
       ]
     },
     {
@@ -1156,7 +1156,7 @@
           ? "🏢 **ระบบจองห้องประชุมออนไลน์:**\nสามารถจองห้องประชุมเพื่อการเรียนรู้และการทำกิจกรรมกลุ่มได้สะดวกรวดเร็วผ่านระบบ SLC Room Booking ตามลิงก์ด้านล่างนี้ครับ"
           : "🏢 **Online Meeting Room Reservation:**\nYou can book group study and meeting rooms easily via the SLC Room Booking system:",
         links: [
-          { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'Book Meeting Room', url: 'https://lib-akira.github.io/SLC-RoomBooking/' }
+          { titleTh: 'ระบบจองห้องประชุม SLC Room Booking', titleEn: 'Book Meeting Room', url: 'https://slc-library.github.io/SLC_RoomBooking/' }
         ]
       };
     }
