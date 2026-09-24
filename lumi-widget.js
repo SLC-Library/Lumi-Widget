@@ -1381,7 +1381,7 @@
     }
 
     // 15. CU-eLibrary
-    if (q.includes('CU-eLibrary') || q.includes('eLibrary') || q.includes('ฐานข้อมูล CU-eLibrary') || q.includes('ฐานข้อมูลออนไลน์ CU-eLibrary') || q.includes('ฐานข้อมูล CU eLibrary') || q.includes('ฐานข้อมูลออนไลน์ CU eLibrary')  || q.includes('จุฬาลงกรณ์') || q.includes('Chulalongkorn University') || q.includes('Chula') || q.includes('ฐานข้อมูลจุฬา') || q.includes('ฐานข้อมูลออนไลน์จุฬา') || q.includes('จุฬา')) {
+    if (q.includes('CU-eLibrary') || q.includes('eLibrary') || q.includes('ฐานข้อมูล CU-eLibrary') || q.includes('ฐานข้อมูลออนไลน์ CU-eLibrary') || q.includes('ฐานข้อมูล CU eLibrary') || q.includes('ฐานข้อมูลออนไลน์ CU eLibrary')  || q.includes('จุฬาลงกรณ์') || q.includes('Chulalongkorn University') || q.includes('Chula') || q.includes('ฐานข้อมูลจุฬา') || q.includes('ฐานข้อมูลออนไลน์จุฬา') || q.includes('จุฬา') || q.includes('cu')) {
       return {
         text: isTh
           ? "🌐 **CU-eLibrary:**\nระบบห้องสมุดดิจิทัลและคลังหนังสืออิเล็กทรอนิกส์ (e-Book) \nที่พัฒนาขึ้นโดยความร่วมมือกับ ศูนย์หนังสือจุฬาลงกรณ์มหาวิทยาลัย \nเพื่อให้บริการหนังสือตำราวิชาการและหนังสือทั่วไปจากสำนักพิมพ์ชั้นนำ"
@@ -1416,6 +1416,15 @@
             { titleTh: 'Scientific e-Resources', titleEn: 'Scientific e-Resources', url: 'https://ser-infotech.com/' },
             { titleTh: 'รหัสผ่านสำหรับใช้ภายนอก', titleEn: 'Off-Campus Password', url: 'https://drive.google.com/file/d/1t2GBJjmyI2Pk5_objWsqQwXuju6KhlFO/view?usp=sharing' }
           ]
+      };
+    }
+    
+    // 18. สมัครสมาชิกรายปี
+    if (q.includes('สมัครสมาชิก') || q.includes('สมาชิกรายปี') || q.includes('ศิษย์เก่า')  || q.includes('รายปี') || q.includes('สมัครสมาชิกห้องสมุด') || q.includes('Alumni') || q.includes('บุคคลภายนอก') || q.includes('บุคคลทั่วไป')) {
+      return {
+        text: isTh
+          ? "🥰 **สมาชิกรายปี:**\nสิ่งที่ต้องเตรียมในการสมัคร : \n• สำเนาบัตรประชาชน(พร้อมรับรองสำเนาถูกต้อง) \n• รูปถ่ายขนาด 1 นิ้ว 2 ใบ \n• ค่าธรรมเนียมสมัคร 100 บาท/ปี"
+          : "🥰 **Annual Membership:**\nApplication Requirements: \n• Copy of National ID card (certified true copy) \n• Two 1-inch photos \n• Membership fee: 100 THB/year"
       };
     }
 
