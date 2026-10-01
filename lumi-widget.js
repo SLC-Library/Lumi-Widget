@@ -844,9 +844,9 @@
       const btn = tabButtons[key];
       if (!btn) return;
       if (key === view) {
-        btn.className = 'w-10 h-10 rounded-xl flex items-center justify-center bg-blue-900 text-white shadow-md ring-2 ring-blue-400/40 cursor-pointer transition-all';
+        btn.className = 'relative w-10 h-10 rounded-xl flex items-center justify-center bg-blue-900 text-white shadow-md ring-2 ring-blue-400/40 cursor-pointer transition-all';
       } else {
-        btn.className = 'w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all cursor-pointer';
+        btn.className = 'relative w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all cursor-pointer';
       }
     });
 
