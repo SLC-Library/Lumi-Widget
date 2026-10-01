@@ -265,6 +265,16 @@
 
   // Render HTML Structure
   container.innerHTML = `
+    <!-- Periodic prompt shown while the chat window is closed -->
+    <button
+      id="lumi-prompt-bubble"
+      type="button"
+      class="hidden absolute bottom-full right-0 mb-3 w-max max-w-[min(260px,calc(100vw-2rem))] rounded-2xl rounded-br-md bg-white px-4 py-3 text-left text-xs sm:text-sm font-semibold text-slate-800 shadow-xl ring-1 ring-slate-200 cursor-pointer transition-all hover:bg-blue-50"
+      aria-label="เปิดแชต Lumi"
+    >
+      <span id="lumi-prompt-text">มีคำถามให้ช่วยไหมครับ? คลิกเรียก Lumi ได้เลย</span>
+    </button>
+
     <!-- Floating Trigger Bubble Button -->
     <button 
       id="lumi-floating-trigger"
@@ -606,6 +616,8 @@
 
   // UI Element References
   const floatingBtn = document.getElementById('lumi-floating-trigger');
+  const promptBubble = document.getElementById('lumi-prompt-bubble');
+  const promptText = document.getElementById('lumi-prompt-text');
   const mainWindow = document.getElementById('lumi-main-window');
   const chatInput = document.getElementById('lumi-chat-input');
   const inputForm = document.getElementById('lumi-input-form');
@@ -644,9 +656,41 @@
     guide: document.getElementById('lumi-tab-guide-btn')
   };
 
+  let promptIntervalId;
+  let promptTimeoutId;
+
+  function hidePromptBubble() {
+    promptBubble.classList.add('hidden');
+    if (promptTimeoutId) {
+      clearTimeout(promptTimeoutId);
+      promptTimeoutId = undefined;
+    }
+  }
+
+  function startPromptCycle() {
+    if (promptIntervalId) return;
+    promptIntervalId = setInterval(() => {
+      if (isWidgetOpen) return;
+      promptText.innerText = currentLang === 'th'
+        ? 'มีคำถามให้ช่วยไหมครับ? คลิกเรียก Lumi ได้เลย'
+        : 'Need help? Click to chat with Lumi.';
+      promptBubble.classList.remove('hidden');
+      promptTimeoutId = setTimeout(hidePromptBubble, 4500);
+    }, 5000);
+  }
+
+  function stopPromptCycle() {
+    if (promptIntervalId) {
+      clearInterval(promptIntervalId);
+      promptIntervalId = undefined;
+    }
+    hidePromptBubble();
+  }
+
   // Toggle Window
   function openWidget() {
     isWidgetOpen = true;
+    stopPromptCycle();
     floatingBtn.classList.add('hidden');
     mainWindow.classList.remove('hidden');
     setTimeout(() => chatInput.focus(), 120);
@@ -656,6 +700,7 @@
     isWidgetOpen = false;
     mainWindow.classList.add('hidden');
     floatingBtn.classList.remove('hidden');
+    startPromptCycle();
   }
 
   function toggleWidget() {
@@ -1225,6 +1270,7 @@
 
   // Event Listeners Binding
   floatingBtn.addEventListener('click', openWidget);
+  promptBubble.addEventListener('click', openWidget);
   document.getElementById('lumi-close-btn').addEventListener('click', closeWidget);
   document.getElementById('lumi-minimize-btn').addEventListener('click', closeWidget);
   document.getElementById('lumi-tab-chat-btn').addEventListener('click', () => switchView('chat'));
@@ -1247,6 +1293,8 @@
   if (faqSearchInput) {
     faqSearchInput.addEventListener('input', renderFaqList);
   }
+
+  startPromptCycle();
 
   inputForm.addEventListener('submit', (e) => {
     e.preventDefault();
