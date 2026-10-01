@@ -370,7 +370,7 @@
         <header class="bg-blue-900 text-white px-4 sm:px-5 py-3.5 sm:py-4 flex items-center justify-between flex-shrink-0 shadow-md">
           <!-- Left: Avatar + Title + Organization -->
           <div class="flex items-center gap-3 min-w-0">
-            <div class="relative w-10 h-10 sm:w-11 sm:h-11 bg-[#00529a] rounded-full flex items-center justify-center p-0.5 overflow-hidden shadow-xs flex-shrink-0">
+            <div class="relative w-10 h-10 sm:w-11 sm:h-11 bg-[#D9822B] rounded-full flex items-center justify-center p-0.5 overflow-hidden shadow-xs flex-shrink-0">
               ${getLumiMascotSvg(36)}
               <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 rounded-full border-2 border-blue-900"></div>
             </div>
