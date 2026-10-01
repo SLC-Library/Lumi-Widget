@@ -396,7 +396,7 @@
       class="hidden absolute bottom-full right-0 mb-3 w-max max-w-[min(260px,calc(100vw-2rem))] rounded-2xl rounded-br-md bg-white px-4 py-3 text-left text-xs sm:text-sm font-semibold text-slate-800 shadow-xl ring-1 ring-slate-200 cursor-pointer transition-all hover:bg-blue-50"
       aria-label="เปิดแชต Lumi"
     >
-      <span id="lumi-prompt-text">มีคำถามให้ช่วยไหมครับ? คลิกเรียก Lumi ได้เลย</span>
+      <span id="lumi-prompt-text">ต้องการความช่วยเหลือ? คลิกเรียก Lumi </span>
     </button>
 
     <!-- Floating Trigger Bubble Button -->
@@ -795,7 +795,7 @@
     promptIntervalId = setInterval(() => {
       if (isWidgetOpen) return;
       promptText.innerText = currentLang === 'th'
-        ? 'มีคำถามให้ช่วยไหมครับ? คลิกเรียก Lumi ได้เลย'
+        ? 'ต้องการความช่วยเหลือ? คลิกเรียก Lumi'
         : 'Need help? Click to chat with Lumi.';
       promptBubble.classList.remove('hidden');
       promptTimeoutId = setTimeout(hidePromptBubble, 4500);
