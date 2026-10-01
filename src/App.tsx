@@ -7,7 +7,7 @@ import { Language } from './types';
 import { MessageSquare, Sparkles, Code } from 'lucide-react';
 
 export default function App() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState<Language>('th');
   const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
 
