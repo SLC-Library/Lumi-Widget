@@ -311,7 +311,7 @@ export const LumiChatWidget: React.FC<LumiChatWidgetProps> = ({
           {/* Left: Avatar + Title + Status */}
           <div className="flex items-center gap-3 min-w-0">
             <div className="relative">
-              <div className="w-11 h-11 bg-[#00529a] rounded-full flex items-center justify-center p-0.5 overflow-hidden shadow-sm">
+              <div className="w-11 h-11 bg-[#D9822B] rounded-full flex items-center justify-center p-0.5 overflow-hidden shadow-sm">
                 <LumiMascot size={36} mood="happy" />
               </div>
               <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-blue-900"></div>
