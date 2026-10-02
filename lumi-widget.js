@@ -7,7 +7,6 @@
  * ==============================================================================
  */
 (function() {
-  // Prevent duplicate initialization
   if (window.__LUMI_CHAT_WIDGET_INITIALIZED__) {
     console.log('Lumi Chat Widget is already initialized.');
     if (window.LumiWidget && window.LumiWidget.open) {
@@ -17,7 +16,6 @@
   }
   window.__LUMI_CHAT_WIDGET_INITIALIZED__ = true;
 
-  // 1. Load Tailwind CSS & Google Fonts if not present
   if (!document.getElementById('lumi-tailwind-cdn')) {
     const twScript = document.createElement('script');
     twScript.id = 'lumi-tailwind-cdn';
@@ -33,7 +31,6 @@
     document.head.appendChild(fontLink);
   }
 
-  // Inject Styles for Typography, Layout & Smooth Animations
   const styleEl = document.createElement('style');
   styleEl.id = 'lumi-custom-styles';
   styleEl.textContent = `
@@ -105,7 +102,6 @@
   `;
   document.head.appendChild(styleEl);
 
-  // SVG Mascot Helper
   const getLumiMascotSvg = (size = 36, mood = 'happy') => {
     const base = `
       <circle cx="30" cy="32" r="14" fill="#FFFFFF" />
@@ -210,7 +206,7 @@
   `;
   };
 
-  // Knowledge Base FAQs (SLC Library Data)
+  // Card Jaaaaaa
   const FAQS = [
     {
       id: 1,
@@ -376,18 +372,18 @@
     },
   ];
 
-  // Create Container
+
   const container = document.createElement('div');
   container.id = 'lumi-widget-root';
   document.body.appendChild(container);
 
-  // State
+
   let currentLang = 'th';
   let isWidgetOpen = false;
   let isFaqOpen = false;
   let currentView = 'chat'; // 'chat' | 'resources' | 'librarian' | 'guide'
 
-  // Render HTML Structure
+
   container.innerHTML = `
     <!-- Periodic prompt shown while the chat window is closed -->
     <button
@@ -737,7 +733,7 @@
     </div>
   `;
 
-  // UI Element References
+
   const floatingBtn = document.getElementById('lumi-floating-trigger');
   const promptBubble = document.getElementById('lumi-prompt-bubble');
   const promptText = document.getElementById('lumi-prompt-text');
@@ -810,7 +806,7 @@
     hidePromptBubble();
   }
 
-  // Toggle Window
+
   function openWidget() {
     isWidgetOpen = true;
     stopPromptCycle();
@@ -831,7 +827,7 @@
     else openWidget();
   }
 
-  // Main View Switcher
+
   function switchView(view) {
     currentView = view;
     chatView.classList.toggle('hidden', view !== 'chat');
@@ -856,7 +852,7 @@
     if (view === 'guide') renderGuideContent();
   }
 
-  // Render Resources Tab
+
   function renderResourcesList() {
     const isTh = currentLang === 'th';
     resourcesList.innerHTML = RESOURCES.map(r => `
@@ -875,7 +871,7 @@
     `).join('');
   }
 
-  // Helper to retrieve dynamic admin data from localStorage if configured
+
   function getDynamicAdminData() {
     try {
       const raw = localStorage.getItem('lumi_library_admin_data');
@@ -884,7 +880,7 @@
     return null;
   }
 
-  // Render Ask a Librarian Tab
+
   function renderLibrarianContent() {
     const isTh = currentLang === 'th';
     const dyn = getDynamicAdminData();
@@ -930,7 +926,7 @@
     `;
   }
 
-  // Render Guide Tab
+
   function renderGuideContent() {
     const isTh = currentLang === 'th';
     const dyn = getDynamicAdminData();
@@ -984,12 +980,12 @@
     `;
   }
 
-  // Language Change Handler (ONLY 1 Switcher in Header)
+  
   function setLanguage(lang) {
     currentLang = lang;
     const isTh = currentLang === 'th';
 
-    // Segmented button active state
+  
     const segEn = document.getElementById('lumi-seg-en');
     const segTh = document.getElementById('lumi-seg-th');
     if (isTh) {
@@ -1055,14 +1051,14 @@
     if (currentView === 'guide') renderGuideContent();
   }
 
-  // Render FAQ list in Dedicated Symmetrical View
+  
   function renderFaqList() {
     const search = (faqSearchInput ? faqSearchInput.value : '').toLowerCase().trim();
     const isTh = currentLang === 'th';
 
     if (!faqCategoriesContainer || !faqItemsList) return;
 
-    // Render category filter pills
+    
     faqCategoriesContainer.innerHTML = FAQ_CATEGORIES.map(cat => `
       <button 
         onclick="window.LumiWidget.setFaqCategory('${cat.id}')"
@@ -1076,7 +1072,7 @@
       </button>
     `).join('');
 
-    // Filter FAQs by search and category
+    
     const filtered = FAQS.filter(f => {
       const qText = isTh ? f.qTh : f.qEn;
       const catText = isTh ? f.catTh : f.catEn;
@@ -1103,13 +1099,13 @@
       return matchesSearch && matchesCat;
     });
 
-    // Update count badge
+    
     const badge = document.getElementById('lumi-faq-count-badge');
     if (badge) {
       badge.innerText = `${filtered.length} ${isTh ? 'คำถาม' : 'items'}`;
     }
 
-    // Empty state
+    
     if (filtered.length === 0) {
       faqItemsList.innerHTML = `
         <div class="text-center py-12 bg-white rounded-2xl border border-slate-200 p-6 space-y-2">
@@ -1124,7 +1120,7 @@
       return;
     }
 
-    // FAQ Cards
+    
     faqItemsList.innerHTML = filtered.map(f => `
       <div class="p-4 bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 hover:shadow-xs transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group">
         <div class="space-y-1 flex-1 min-w-0">
@@ -1146,7 +1142,7 @@
     `).join('');
   }
 
-  // Send Message Logic
+  
   function sendMessage(text) {
     if (!text || !text.trim()) return;
     openWidget();
@@ -1161,8 +1157,7 @@
     }, 550);
   }
 
-  // Ask a specific FAQ directly — uses the FAQ's own pre-written answer,
-  // bypassing generateBotResponse's keyword matching entirely.
+  
   function askFaqDirectly(faqId) {
     const faq = FAQS.find(f => f.id === faqId);
     if (!faq) return;
@@ -1247,7 +1242,7 @@
     messagesBox.scrollTop = messagesBox.scrollHeight;
   }
 
-  // Response Generator with High-Precision SLC Library Data
+  
   function generateBotResponse(query) {
     const q = query.toLowerCase();
     const isTh = currentLang === 'th';
@@ -1489,7 +1484,7 @@
     return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
   }
 
-  // Event Listeners Binding
+  
   floatingBtn.addEventListener('click', openWidget);
   promptBubble.addEventListener('click', openWidget);
   document.getElementById('lumi-close-btn').addEventListener('click', closeWidget);
@@ -1503,7 +1498,7 @@
   const heroFaqsLink = document.getElementById('lumi-hero-faqs-link');
   if (heroFaqsLink) heroFaqsLink.addEventListener('click', () => switchView('faq'));
   
-  // Single Language Switcher (Header Segmented Control)
+ 
   document.getElementById('lumi-seg-th').addEventListener('click', () => setLanguage('th'));
   document.getElementById('lumi-seg-en').addEventListener('click', () => setLanguage('en'));
 
@@ -1526,7 +1521,7 @@
     }
   });
 
-  // Global API Exposure
+  
   window.LumiWidget = {
     open: openWidget,
     close: closeWidget,
@@ -1560,7 +1555,7 @@
     }
   };
 
-  // Initial State Setup
+  
   openWidget();
   renderFaqList();
 
